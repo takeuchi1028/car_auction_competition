@@ -16,7 +16,7 @@ colunm_name = 'result'
 # result 列のfailを0、successを1に変換
 bank_test[colunm_name] = bank_test[colunm_name].map({'fail': 0, 'success': 1})
 
-st.title('Leaderboard for test.csv')
+st.title('Bankmarketing Competition')
 ranking_df = pd.read_csv('ranking.csv')
 
 st.sidebar.title('オプション')
