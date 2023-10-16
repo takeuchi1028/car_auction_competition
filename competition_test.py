@@ -35,7 +35,8 @@ uploaded_file = st.file_uploader("CSV ファイルをアップロードしてく
 
 # 表のアップロード方法についてサンプルを提示
 st.write('提出する CSV ファイルは以下の形式で提出してください。インデックス列は不要です。')
-df = pd.DataFrame({'result': ['fail', 'fail', 'success', 'fail', 'success']})
+st.write('fail は 0, success は 1 に置き換えてください')
+df = pd.DataFrame({'result': [0, 0, 1, 0, 1]})
 st.dataframe(df)
 
 
@@ -43,9 +44,8 @@ st.dataframe(df)
 st.write('CSV ファイルを選択したら以下の「評価」ボタンをクリックしてください。')
 if st.button('評価') and uploaded_file is not None:
 
-    # 読み込みと変換
+    # 読み込み
     input_df = pd.read_csv(uploaded_file)
-    input_df[colunm_name] = input_df[colunm_name].map({'fail': 0, 'success': 1})
 
     score_acc = round(accuracy_score(bank_test[colunm_name], input_df[colunm_name])*100, 4)
     score_rec = round(recall_score(bank_test[colunm_name], input_df[colunm_name])*100, 4)
