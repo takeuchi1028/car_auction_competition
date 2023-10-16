@@ -75,8 +75,9 @@ try:
         
         ranking_df.to_csv('ranking.csv', index=False)
         # print(df_score)
+        st.write('推論できました！ランキングボードを確認してみましょう。')
 except:
-    st.write('エラーが発生したため正しく推論結果を保存できませんでした。提出フォーマット等を再度確認してみましょう。')
+    st.write('<span style="color:red">エラーが発生したため正しく推論結果を保存できませんでした。提出フォーマット等を再度確認してみましょう。</span>', unsafe_allow_html=True)
 
 st.sidebar.download_button('csvファイルを出力', ranking_df.to_csv(index=False), 'ranking.csv')
 
